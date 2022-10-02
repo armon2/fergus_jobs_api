@@ -3,9 +3,10 @@
 ## Installing and running the app
 
 ```bash
-# create a python virtual
+# create a python virtual env at project root dir & activate
+python3 -m venv . && . bin/activate
 # Install the project and dependencies first
-python setup.py install
+python3 setup.py install
 # initialize the database next
 flask --app jobs init-db
 # Finally start the server
@@ -55,6 +56,12 @@ Content-Type: application/json
 
 This API is backed by a sqlite database with two tables `jobs` and `job_notes`.
 It is currently only implementing the Jobs API without Notes; job notes will be in the next release!
+- `jobs/__init__.py` creates and initializes the app
+- `jobs/jobs.py` is the controller with defined endpoints
+- `jobs/jobs_service.py` is the service layer that sit on top of the data layer and handles the business logic.
+- `jobs/schema.sql` has the schema defined
+- `jobs/db.py` holds the utilities to talk to the sqlite db
+
 Current capabilities are as follows:
 
 - POST: create a job:
